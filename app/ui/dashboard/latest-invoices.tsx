@@ -4,9 +4,12 @@ import Image from 'next/image';
 import { lusitana } from '@/app/ui/fonts';
 import { LatestInvoice } from '@/app/lib/definitions';
 import { fetchLatestInvoices } from '@/app/lib/data';
+import { StaticImport } from 'next/dist/shared/lib/get-img-props';
+import { Key, ReactElement, JSXElementConstructor, ReactNode, ReactPortal, PromiseLikeOfReactNode } from 'react';
+
 
 export default async function LatestInvoices() {
-  const latestInvoices = await LatestInvoices();
+  const latestInvoices = await fetchLatestInvoices();
 
   return (
     <div className="flex w-full flex-col md:col-span-4">
@@ -17,7 +20,7 @@ export default async function LatestInvoices() {
         {/* NOTE: comment in this code when you get to this point in the course */}
 
         <div className="bg-white px-6">
-          {latestInvoices.map((invoice, i) => {
+          {latestInvoices.map((invoice: { id: Key | null | undefined; image_url: string | StaticImport; name: string | number | boolean | ReactElement<any, string | JSXElementConstructor<any>> | Iterable<ReactNode> | ReactPortal | PromiseLikeOfReactNode | null | undefined; email: string | number | boolean | ReactElement<any, string | JSXElementConstructor<any>> | Iterable<ReactNode> | ReactPortal | PromiseLikeOfReactNode | null | undefined; amount: string | number | boolean | ReactElement<any, string | JSXElementConstructor<any>> | Iterable<ReactNode> | ReactPortal | PromiseLikeOfReactNode | null | undefined; }, i: number) => {
             return (
               <div
                 key={invoice.id}
