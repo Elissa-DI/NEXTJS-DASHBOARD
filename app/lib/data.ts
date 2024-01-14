@@ -83,7 +83,7 @@ export async function fetchCardData() {
       numberOfInvoices,
       totalPaidInvoices,
       totalPendingInvoices,
-    };
+    };    
   } catch (error) {
     console.error('Database Error:', error);
     throw new Error('Failed to fetch card data.');
@@ -168,6 +168,8 @@ export async function fetchInvoiceById(id: string) {
       amount: invoice.amount / 100,
     }));
 
+    console.log(invoice);
+    
     return invoice[0];
   } catch (error) {
     console.error('Database Error:', error);
